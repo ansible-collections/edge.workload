@@ -129,5 +129,3 @@
   when:
     - container_state in ["absent", "uninstalled"]
     - pre_install_container_info['containers']
-
-

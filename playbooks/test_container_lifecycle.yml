@@ -14,4 +14,3 @@
         container_healthcheck_cmd: "/usr/local/bin/redis-cli info"
         container_healthcheck_interval: "30s"
         container_healthcheck_retries: 5
-
