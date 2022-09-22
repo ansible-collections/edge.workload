@@ -67,41 +67,41 @@ jobs:
           #   ansible.netcommon
           #   ansible.utils
 
-###
-# Unit tests (OPTIONAL)
-#
-# https://docs.ansible.com/ansible/latest/dev_guide/testing_units.html
+# ###
+# # Unit tests (OPTIONAL)
+# #
+# # https://docs.ansible.com/ansible/latest/dev_guide/testing_units.html
 
-  units:
-    runs-on: ubuntu-latest
-    name: Units (Ⓐ${{ matrix.ansible }})
-    strategy:
-      # As soon as the first unit test fails, cancel the others to free up the CI queue
-      fail-fast: true
-      matrix:
-        ansible:
-          # - stable-2.9 # Only if your collection supports Ansible 2.9
-          # - stable-2.10 # Only if your collection supports ansible-base 2.10
-          - stable-2.11
-          - stable-2.12
-          - stable-2.13
-          - stable-2.14
-          - devel
-        # - milestone
+#   units:
+#     runs-on: ubuntu-latest
+#     name: Units (Ⓐ${{ matrix.ansible }})
+#     strategy:
+#       # As soon as the first unit test fails, cancel the others to free up the CI queue
+#       fail-fast: true
+#       matrix:
+#         ansible:
+#           # - stable-2.9 # Only if your collection supports Ansible 2.9
+#           # - stable-2.10 # Only if your collection supports ansible-base 2.10
+#           - stable-2.11
+#           - stable-2.12
+#           - stable-2.13
+#           - stable-2.14
+#           - devel
+#         # - milestone
 
-    steps:
-      - name: >-
-          Perform unit testing against
-          Ansible version ${{ matrix.ansible }}
-        uses: ansible-community/ansible-test-gh-action@release/v1
-        with:
-          ansible-core-version: ${{ matrix.ansible }}
-          testing-type: units
-          # OPTIONAL If your unit tests require code
-          # from other collections, install them like this
-          test-deps: >-
-            ansible.netcommon
-            ansible.utils
+#     steps:
+#       - name: >-
+#           Perform unit testing against
+#           Ansible version ${{ matrix.ansible }}
+#         uses: ansible-community/ansible-test-gh-action@release/v1
+#         with:
+#           ansible-core-version: ${{ matrix.ansible }}
+#           testing-type: units
+#           # OPTIONAL If your unit tests require code
+#           # from other collections, install them like this
+#           test-deps: >-
+#             ansible.netcommon
+#             ansible.utils
 
 ###
 # Integration tests (RECOMMENDED)
@@ -109,59 +109,59 @@ jobs:
 # https://docs.ansible.com/ansible/latest/dev_guide/testing_integration.html
 
 
-# If the application you are testing is available as a docker container and you want to test
-# multiple versions see the following for an example:
-# https://github.com/ansible-collections/community.zabbix/tree/master/.github/workflows
+# # If the application you are testing is available as a docker container and you want to test
+# # multiple versions see the following for an example:
+# # https://github.com/ansible-collections/community.zabbix/tree/master/.github/workflows
 
-  integration:
-    runs-on: ubuntu-latest
-    name: I (Ⓐ${{ matrix.ansible }}+py${{ matrix.python }})
-    strategy:
-      fail-fast: false
-      matrix:
-        ansible:
-          # - stable-2.9 # Only if your collection supports Ansible 2.9
-          # - stable-2.10 # Only if your collection supports ansible-base 2.10
-          - stable-2.11
-          - stable-2.12
-          - stable-2.13
-          - stable-2.14
-          - devel
-        # - milestone
-        python:
-          - '2.6'
-          - '2.7'
-          - '3.5'
-          - '3.6'
-          - '3.7'
-          - '3.8'
-          - '3.9'
-          - '3.10'
-        exclude:
-          # Because ansible-test doesn't support Python 3.9 for Ansible 2.9
-          # and Python 3.10 is supported in 2.12 or later.
-          - ansible: stable-2.9
-            python: '3.9'
-          - ansible: stable-2.9
-            python: '3.10'
-          - ansible: stable-2.10
-            python: '3.10'
-          - ansible: stable-2.11
-            python: '3.10'
+#   integration:
+#     runs-on: ubuntu-latest
+#     name: I (Ⓐ${{ matrix.ansible }}+py${{ matrix.python }})
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         ansible:
+#           # - stable-2.9 # Only if your collection supports Ansible 2.9
+#           # - stable-2.10 # Only if your collection supports ansible-base 2.10
+#           - stable-2.11
+#           - stable-2.12
+#           - stable-2.13
+#           - stable-2.14
+#           - devel
+#         # - milestone
+#         python:
+#           - '2.6'
+#           - '2.7'
+#           - '3.5'
+#           - '3.6'
+#           - '3.7'
+#           - '3.8'
+#           - '3.9'
+#           - '3.10'
+#         exclude:
+#           # Because ansible-test doesn't support Python 3.9 for Ansible 2.9
+#           # and Python 3.10 is supported in 2.12 or later.
+#           - ansible: stable-2.9
+#             python: '3.9'
+#           - ansible: stable-2.9
+#             python: '3.10'
+#           - ansible: stable-2.10
+#             python: '3.10'
+#           - ansible: stable-2.11
+#             python: '3.10'
             
 
-    steps:
-      - name: >-
-          Perform integration testing against
-          Ansible version ${{ matrix.ansible }}
-          under Python ${{ matrix.python }}
-        uses: ansible-community/ansible-test-gh-action@release/v1
-        with:
-          ansible-core-version: ${{ matrix.ansible }}
-          # OPTIONAL command to run before invoking `ansible-test integration`
-          # pre-test-cmd:
-          target-python-version: ${{ matrix.python }}
-          testing-type: integration
-          # OPTIONAL If your integration tests require code
-          # from other collections, install them like this
-          test-deps: ansible.netcommon
+#     steps:
+#       - name: >-
+#           Perform integration testing against
+#           Ansible version ${{ matrix.ansible }}
+#           under Python ${{ matrix.python }}
+#         uses: ansible-community/ansible-test-gh-action@release/v1
+#         with:
+#           ansible-core-version: ${{ matrix.ansible }}
+#           # OPTIONAL command to run before invoking `ansible-test integration`
+#           # pre-test-cmd:
+#           target-python-version: ${{ matrix.python }}
+#           testing-type: integration
+#           # OPTIONAL If your integration tests require code
+#           # from other collections, install them like this
+#           test-deps: ansible.netcommon
