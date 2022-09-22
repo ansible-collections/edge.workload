@@ -1,11 +1,13 @@
-# collection_template
-You can build a new repository for an Ansible Collection using this template by following [Creating a repository from a template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template). This README.md contains recommended headings for your collection README.md, with comments describing what each section should contain. Once you have created your collection repository, delete this paragraph and the title above it from your README.md.
+# IN DEVELOPMENT
 
-# Foo Collection for Ansible
+# Edge Workload Collection for Ansible
 <!-- Add CI and code coverage badges here. Samples included below. -->
-[![CI](https://github.com/ansible-collections/REPONAMEHERE/workflows/CI/badge.svg?event=push)](https://github.com/ansible-collections/REPONAMEHERE/actions) [![Codecov](https://img.shields.io/codecov/c/github/ansible-collections/REPONAMEHERE)](https://codecov.io/gh/ansible-collections/REPONAMEHERE)
+[![CI](https://github.com/ansible-collections/edge.workload/workflows/CI/badge.svg?event=push)](https://github.com/ansible-collections/edge.workload/actions) [![Codecov](https://img.shields.io/codecov/c/github/ansible-collections/edge.workload)](https://codecov.io/gh/ansible-collections/edge.workload)
 
 <!-- Describe the collection and why a user would want to use it. What does the collection do? -->
+
+This Collection contains content to automate segmented, isolated, or otherwise sandboxed workloads for Edge Computing scenarios. It is entirely possible this content will be useful outside of that context. However, the main focus of this content will be on the Edge Computing use cases.
+
 
 ## Code of Conduct
 
@@ -76,38 +78,38 @@ Every voice is important. If you have something on your mind, create an issue or
 
 ## Using this collection
 
-<!--Include some quick examples that cover the most common use cases for your collection content. It can include the following examples of installation and upgrade (change NAMESPACE.COLLECTION_NAME correspondingly):-->
+<!--Include some quick examples that cover the most common use cases for your collection content. It can include the following examples of installation and upgrade (change edge.workload correspondingly):-->
 
 ### Installing the Collection from Ansible Galaxy
 
 Before using this collection, you need to install it with the Ansible Galaxy command-line tool:
 ```bash
-ansible-galaxy collection install NAMESPACE.COLLECTION_NAME
+ansible-galaxy collection install edge.workload
 ```
 
 You can also include it in a `requirements.yml` file and install it with `ansible-galaxy collection install -r requirements.yml`, using the format:
 ```yaml
 ---
 collections:
-  - name: NAMESPACE.COLLECTION_NAME
+  - name: edge.workload
 ```
 
 Note that if you install the collection from Ansible Galaxy, it will not be upgraded automatically when you upgrade the `ansible` package. To upgrade the collection to the latest available version, run the following command:
 ```bash
-ansible-galaxy collection install NAMESPACE.COLLECTION_NAME --upgrade
+ansible-galaxy collection install edge.workload --upgrade
 ```
 
 You can also install a specific version of the collection, for example, if you need to downgrade when something is broken in the latest version (please report an issue in this repository). Use the following syntax to install version `0.1.0`:
 
 ```bash
-ansible-galaxy collection install NAMESPACE.COLLECTION_NAME:==0.1.0
+ansible-galaxy collection install edge.workload:==0.1.0
 ```
 
 See [Ansible Using collections](https://docs.ansible.com/ansible/devel/user_guide/collections_using.html) for more details.
 
 ## Release notes
 
-See the [changelog](https://github.com/ansible-collections/REPONAMEHERE/tree/main/CHANGELOG.rst).
+See the [changelog](https://github.com/ansible-collections/edge.workload/tree/main/CHANGELOG.rst).
 
 ## Roadmap
 
